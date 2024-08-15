@@ -8,7 +8,7 @@
 </head>
 <body>
     <button id="notifyButton" nonce="xyz123" >Solicitar Notificação</button>
-<script>const button = document.querySelector("#notifyButton");
+<script  nonce="xyz123">const button = document.querySelector("#notifyButton");
 
 button.addEventListener("click", () => {
     Notification.requestPermission().then(perm => {
