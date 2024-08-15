@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="script-src 'self' https://codepen.io/pen/?editors=1111">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações de Navegador</title>
+</head>
+<body>
+    <button id="notifyButton">Solicitar Notificação</button>
+<script>const button = document.querySelector("#notifyButton");
+
+button.addEventListener("click", () => {
+    Notification.requestPermission().then(perm => {
+        if (perm === "granted") {
+            const notification = new Notification("Example notification", {
+                body: `Mensagem aleatória: ${Math.random()}`,
+                icon: "Logo Centered.png", // Substitua pelo caminho real do ícone
+                tag: "Welcome Message",
+            });
+
+            notification.addEventListener("error", e => {
+                alert("Erro ao exibir a notificação");
+            });
+        }
+    });
+});
+
+let notification;
+let interval;
+
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+        const leaveDate = new Date();
+        interval = setInterval(() => {
+            notification = new Notification("Come back please", {
+                body: `Você está ausente há ${Math.round((new Date() - leaveDate) / 1000)} segundos`,
+                tag: "Come Back",
+            });
+        }, 100);
+    } else {
+        if (interval) clearInterval(interval);
+        if (notification) notification.close();
+    }
+});
+</script>
+    
+</body>
+</html>
