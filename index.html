@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="script-src 'self' https://jake160627.github.io/noticiaciones/">
+    <meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-xyz123' https://jake160627.github.io/noticiaciones/;">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificações de Navegador</title>
 </head>
 <body>
-    <button id="notifyButton">Solicitar Notificação</button>
+    <button id="notifyButton" nonce="xyz123" >Solicitar Notificação</button>
 <script>const button = document.querySelector("#notifyButton");
 
 button.addEventListener("click", () => {
